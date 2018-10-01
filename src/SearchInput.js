@@ -43,7 +43,7 @@ class SearchInput extends Component {
 
   render() {
   	const { updateShelf, books } = this.props
-    const { query, newBooks, searchError } = this.state    
+    const { newBooks, searchError } = this.state    
 
     return (
       <div className="search-books">
