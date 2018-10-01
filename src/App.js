@@ -5,16 +5,9 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import BookShelf from './BookShelf'
 import SearchInput from './SearchInput'
-import PropTypes from 'prop-types'
 
 
 class BooksApp extends React.Component {
-  static propTypes = {
-    books: PropTypes.array.isRequired,
-    shelfChanger: PropTypes.array.isRequired,
-    updateShelf: PropTypes.func.isRequired
-  }
-
   state = {
     books : [],
     shelfChanger: []
