@@ -32,7 +32,7 @@ class BookList extends Component {
 			/>
 	      </div>
 	      <div className="book-title">{book.title}</div>
-	      <div className="book-authors">{book.authors ? book.authors : 'Unknown'}</div>
+	      <div className="book-authors">{book.authors ? book.authors.join(', ') : 'Unknown'}</div>
 	    </div>
     )
   }
