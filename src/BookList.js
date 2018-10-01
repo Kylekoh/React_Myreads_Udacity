@@ -32,7 +32,6 @@ class BookList extends Component {
 			/>
 	      </div>
 	      <div className="book-title">{book.title}</div>
-	      // If authors name exist, show it or show 'Unknown'
 	      <div className="book-authors">{book.authors ? book.authors : 'Unknown'}</div>
 	    </div>
     )

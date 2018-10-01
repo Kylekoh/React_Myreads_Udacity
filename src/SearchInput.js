@@ -3,18 +3,25 @@ import { Link } from 'react-router-dom'
 import BookList from './BookList'
 import * as BooksAPI from './BooksAPI'
 import PropTypes from 'prop-types'
+import {debounce} from 'throttle-debounce';
 
 
 class SearchInput extends Component {
+  constructor(props) {
+    super(props);
+  
+    this.state = {
+      query: '',
+      newBooks: [],
+      searchError: false,      
+    };
+
+    this.getBooks = debounce(300, this.getBooks);
+  }
+
   static propTypes = {
     updateShelf: PropTypes.func.isRequired,
     books: PropTypes.array.isRequired
-  }
-
-  state = {
-  	query: '',
-  	newBooks: [],
-  	searchError: false,
   }
 
   // update query as typed and trim it
