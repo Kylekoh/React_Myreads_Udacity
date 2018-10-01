@@ -18,19 +18,20 @@ class SearchInput extends Component {
   }
 
   // update query as typed and trim it
-  updateQuery = (query) => {
-  	this.setState({ query: query.trim() })
+  updateQuery = (event) => {
+    const query = event.target.value.trim()
+  	this.setState({query: query}, this.getBooks(query));
   } 
+
   // show results of search
   getBooks = (query) => {
-    this.updateQuery(query);
- 	if(this.state.query) {
- 	  BooksAPI.search(this.state.query, 20).then((books) => {
- 	  	books.length > 0 ? this.setState({ newBooks:books, searchError:false }) : this.setState({ newBooks:[], searchError:true })
- 	  })	
- 	} else {
- 	  this.setState({ newBooks:[], searchError:false })
- 	}
+   	if(query) {
+   	  BooksAPI.search(query, 20).then((books) => {
+   	  	books.length > 0 ? this.setState({ newBooks:books, searchError:false }) : this.setState({ newBooks:[], searchError:true })
+   	  })	
+   	} else {
+   	  this.setState({ newBooks:[], searchError:false })
+   	}
   }
 
   render() {
@@ -48,7 +49,7 @@ class SearchInput extends Component {
             <input 
               type="text" 
               placeholder="Search by title or author"
-              onChange={(event) => this.getBooks(event.target.value)}
+              onChange={this.updateQuery}
             />
           </div>
         </div>
